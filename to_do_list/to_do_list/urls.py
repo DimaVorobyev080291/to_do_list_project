@@ -16,7 +16,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from rest_framework.routers import DefaultRouter
+from to_do_list_app.views import To_do_list_ViewSet
+
+r = DefaultRouter()
+r.register('to_do', To_do_list_ViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-]
+] + r.urls
